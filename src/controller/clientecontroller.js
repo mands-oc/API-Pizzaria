@@ -114,4 +114,4 @@ exports.deletarCliente = async (req, res) => {
         console.error('Erro ao deletar cliente:', err);
         res.status(500).json({ error: 'Erro ao deletar cliente' });
     }
-}
+};
