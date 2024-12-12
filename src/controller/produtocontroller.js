@@ -53,10 +53,11 @@ exports.adicionarProduto = async (req, res) => {
 
         res.json({ message: 'Produto adicionado com sucesso' });
     } catch (err) {
-        console.error('Erro ao adicionar cliente:', err);
+        console.error('Erro ao adicionar produto:', err);
         res.status(500).json({ error: 'Erro ao adicionar produto' });
     }
 };
+
 //Atualizar um produto
 exports.atualizarProduto = async (req, res) => {
     const { idProduto } = req.params;
@@ -93,7 +94,7 @@ exports.deletarProduto = async (req, res) => {
         await db.query('DELETE FROM produto WHERE idProduto = ?', [idProduto]);
         res.json({ message: 'Produto deletado com sucesso' });
     } catch (err) {
-        console.error('Erro ao deletar cliente:', err);
+        console.error('Erro ao deletar produto:', err);
         res.status(500).json({ error: 'Erro ao deletar produto' });
     }
 };

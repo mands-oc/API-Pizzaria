@@ -14,7 +14,7 @@ router.post('/entregador', entregadorController.adicionarEntregador);
 //Rota para atualizar um entregador por ID
 router.put('/entregador/:idEntregador', entregadorController.atualizarEntregador);
 
-//Rota ´para deletar um entregador por ID
+//Rota para deletar um entregador por ID
 router.delete('/entregador/:idEntregador', entregadorController.deletarEntregador);
 
 module.exports = router;

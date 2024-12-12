@@ -17,7 +17,7 @@ exports.listarEntregador = async (req, res) => {
         const [result] = await db.query('SELECT * FROM entregador');
         res.json(result); //Aqui retornamos apenas os dados da consulta
     } catch (err) {
-        console.error('Erro ao buscar clientes:', err);
+        console.error('Erro ao buscar entregador:', err);
         res.status(500).json({ error: 'Erro interno do servidor' });
     }
 };
@@ -50,7 +50,7 @@ exports.adicionarEntregador = async (req, res) => {
         const novoEntregador = { idEntregador, nomeEntregador, cnh, telefoneEntregador };
         await db.query('INSERT INTO entregador SET ?', novoEntregador)
 
-        res.json({ message: 'Produto adicionado com sucesso' });
+        res.json({ message: 'Entregador adicionado com sucesso' });
     } catch (err) {
         console.error('Erro ao adicionar entregador:', err);
         res.status(500).json({ error: 'Erro ao adicionar entregador' })
@@ -91,9 +91,9 @@ exports.deletarEntregador = async (req, res) => {
             return res.status(404).json({ error: 'Entregador não encontrado' });
         }
         await db.query('DELETE FROM entregador WHERE idEntregador = ?', [idEntregador]);
-        res.json({ message: 'Produto deletado com sucesso' });
+        res.json({ message: 'Entregador deletado com sucesso' });
     } catch (err) {
         console.error('Erro ao deletar entregador:', err);
-        res.status(500).json({ error: 'Erro ao deletar produto' });
+        res.status(500).json({ error: 'Erro ao deletar entregador' });
     }
 };
