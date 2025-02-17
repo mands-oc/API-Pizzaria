@@ -38,15 +38,10 @@ app.get('/', (req, res) => {
 //Configuração de rotas
 //APÓS DECLARAR NOSSAS ROTAS, AQUI FALAMOS PARA NOSSO APP USAR ELAS COMO REFERÊNCIA 
 app.use('/', routes);
-
 app.use('/', clienteRoutes);
-
 app.use('/', produtoRoutes);
-
 app.use('/', entregadorRoutes);
-
 app.use('/', pedidoRoutes);
-
 app.use('/', itempedidoRoutes);
 
 //Middleware de tratamento de erros

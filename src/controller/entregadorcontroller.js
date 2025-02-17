@@ -39,15 +39,15 @@ exports.listarEntregadorID = async (req, res) => {
 
 //Adicionar um novo entregador
 exports.adicionarEntregador = async (req, res) => {
-    const { idEntregador, nomeEntregador, cnh, telefoneEntregador } = req.body;
+    const { nomeEntregador, cnh, telefoneEntregador } = req.body;
 
     //Validação de dados
-    const { error } = entregadorSchema.validate({ idEntregador, nomeEntregador, cnh, telefoneEntregador });
+    const { error } = entregadorSchema.validate({ nomeEntregador, cnh, telefoneEntregador });
     if (error) {
         return res.status(400).json({ error: error.details[0].message });
     }
     try {
-        const novoEntregador = { idEntregador, nomeEntregador, cnh, telefoneEntregador };
+        const novoEntregador = { nomeEntregador, cnh, telefoneEntregador };
         await db.query('INSERT INTO entregador SET ?', novoEntregador)
 
         res.json({ message: 'Entregador adicionado com sucesso' });
