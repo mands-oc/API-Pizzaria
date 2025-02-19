@@ -62,10 +62,10 @@ exports.adicionarPedido = async (req, res) => {
 //Atualizar um pedido
 exports.atualizarPedido = async (req, res) => {
     const { idPedido } = req.params;
-    const { dataPedido, qtdeItens, formaPagto, valorTotal, observacao } = req.body;
+    const { dataPedido, qtdeItens, formaPagto, valorTotal, observacao, cpf, idEntregador } = req.body;
 
     //Validação de dados
-    const { error } = pedidoSchema.validate({ idPedido, dataPedido, qtdeItens, formaPagto, valorTotal, observacao, cpf, idEntregador });
+    const { error } = pedidoSchema.validate({ dataPedido, qtdeItens, formaPagto, valorTotal, observacao, cpf, idEntregador });
     if (error) {
         return res.status(400).json({ error: error.details[0].message });
     }
@@ -75,7 +75,7 @@ exports.atualizarPedido = async (req, res) => {
         if (result.length === 0) {
             return res.status(400).json({ error: 'Pedido não encontrado' })
         }
-        const pedidoAtualizado = { dataPedido, qtdeItens, formaPagto, valorTotal, observacao };
+        const pedidoAtualizado = { dataPedido, qtdeItens, formaPagto, valorTotal, observacao, cpf, idEntregador };
         await db.query('UPDATE pedido SET ? WHERE idPedido = ?', [pedidoAtualizado, idPedido]);
         res.json({ message: 'Pedido atualizado com sucesso' });
     } catch (err) {

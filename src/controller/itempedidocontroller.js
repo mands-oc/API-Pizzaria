@@ -54,7 +54,7 @@ exports.atualizarItempedido = async (req, res) => {
     const { idItem } = req.params;
     const { qtde, valorParcial, idProduto, idPedido } = req.body;
     
-    const { error } = itempedidoSchema.validate({ idItem, qtde, valorParcial, idProduto, idPedido });
+    const { error } = itempedidoSchema.validate({ qtde, valorParcial, idProduto, idPedido });
     if (error) {
         return res.status(400).json({ error: error.details[0].message });
     }
