@@ -87,7 +87,7 @@ exports.deletarEntregador = async (req, res) => {
     try {
         //Verifica se o entregador existe antes de deletar 
         const [result] = await db.query('SELECT * FROM entregador WHERE idEntregador = ?', [idEntregador]);
-        if (result.lenght === 0) {
+        if (result.length === 0) {
             return res.status(404).json({ error: 'Entregador não encontrado' });
         }
         await db.query('DELETE FROM entregador WHERE idEntregador = ?', [idEntregador]);
