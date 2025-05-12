@@ -17,12 +17,15 @@ const corsOptions = {
     origin: ['http://localhost:3333', 'http://127.0.0.1:5501'], //Lista de origens permitidas
     methods: 'GET,POST,PUT,PATCH,DELETE', //Métodos HTTP permitidos
     credentials: true, //Permite o envio de cookies
+    allowedHeaders: ['Content-Type', '*'], //Cabeçalhos permitidos
+    exposedHeaders: ['Content-Length', 'X-Total-Count'], //Cabeçalhos expostos
 };
 
 const app = express(); //O APP IRÁ RECEBER O EXPRESS E TODAS SUAS DEPENDÊNCIAS 
 //Middlewares de segurança e utilidades
 app.use(helmet()); //Protege a aplicação com headers de segurança
 app.use(cors(corsOptions)); //Habilita o CORS
+app.use(express.urlencoded({extended:false}));
 app.use(morgan('dev')); //Loga as requisições no console
 app.use(express.json()); //Converte os dados recebidos para JSON
 
