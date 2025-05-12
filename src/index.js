@@ -14,7 +14,7 @@ const entregadorRoutes = require('./routes/entregadorroutes');
 const pedidoRoutes = require('./routes/pedidoroutes');
 const itempedidoRoutes = require('./routes/itempedidoroutes');
 const corsOptions = {
-    origin: ['http://localhost:3333', 'https://meudominio.com'], //Lista de origens permitidas
+    origin: ['http://localhost:3333', 'http://127.0.0.1:5501'], //Lista de origens permitidas
     methods: 'GET,POST,PUT,PATCH,DELETE', //Métodos HTTP permitidos
     credentials: true, //Permite o envio de cookies
 };
